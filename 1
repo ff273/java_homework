@@ -1,1 +1,84 @@
+import java.util.*;
+class point{
+	int x,y;
+	public point(int x,int y) {
+		this.x=x;
+		this.y=y;
+	}	
+}
+class xianduan{
+	point a;
+	point b;
+	public xianduan(point a,point b){
+		this.a=a;
+		this.b=b;
+	}
+	public void length() {
+		double l;
+		l=Math.sqrt((a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y));
+		System.out.printf("%.2f\n",l);
+	}
+	public void move(int x, int y) {
+		a.x+=x;
+		a.y+=y;
+		b.x+=x;
+		b.y+=y;
+
+	}
+	public void qiufan(){
+		a.x=-a.x;
+		a.y=-a.y;
+		b.x=-b.x;
+		b.y=-b.y;
+	}
+	public void duichenX(){
+		a.y=-a.y;
+		b.y=-b.y;
+	}
+	public void duichenY(){
+		a.x=-a.x;
+		b.x=-b.x;
+	}
+	public void getab() {
+		System.out.print("("+a.x+","+a.y+")"+"("+b.x+","+b.y+")"+" ");
+    }
+
+}//xianduan
+public class Main {
+    public static void main(String args[]) {
+    	int x,y;
+    	Scanner input=new Scanner(System.in);
+    		x=input.nextInt();
+        	y=input.nextInt();
+        	point a=new point(x,y);
+        	x=input.nextInt();
+        	y=input.nextInt();
+        	point b=new point(x,y);
+        	xianduan m=new xianduan(a,b);
+  while(input.hasNext()) {
+	      String s=input.next();
+          char idea=s.charAt(0);
+	        	if(idea=='T') {
+	        		x=input.nextInt();
+	            	y=input.nextInt();
+	            	m.move(x,y);
+	        	}
+	        	else if(idea=='S') {
+	        		x=input.nextInt();
+	        		if(x==0) {
+	        		m.qiufan();
+	        		}
+	        		else if(x==1) {
+	        		m.duichenX();	
+	        		}
+	        		else {
+	        		m.duichenY();
+	        		}
+	        	}
+    	}//
+        m.getab();
+        m.length();	
+        
+    }//main
+}//Main
 
